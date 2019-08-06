@@ -18,12 +18,13 @@ html{
 	margin-top: 250px !important; 
 	padding: 5px;
 	height: auto;
-	width: 600px !important;
+	width: auto !important;
 	margin: auto;
 	justify-content: space-between;
 	text-align: center;
 	
 }
+
 }
 body{
 	margin-top: 40px;
