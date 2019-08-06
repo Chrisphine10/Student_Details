@@ -9,6 +9,21 @@ html{
 	color: #fff;
 	
 }
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+  .display {
+	max-width: inherit;
+	display: block;
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	border-radius: 6px;
+	padding: 5px;
+	height: auto;
+	width: 600px;
+	margin: auto;
+	justify-content: space-between;
+	text-align: center;
+	
+}
+}
 body{
 	margin-top: 40px;
 	margin-left: 0px;
