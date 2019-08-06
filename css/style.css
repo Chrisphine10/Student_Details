@@ -15,9 +15,10 @@ html{
 	display: block;
 	background-color: rgba(0, 0, 0, 0.5) !important;
 	border-radius: 6px;
+	margin-top: 100px !important; 
 	padding: 5px;
 	height: auto;
-	width: 600px;
+	width: 600px !important;
 	margin: auto;
 	justify-content: space-between;
 	text-align: center;
