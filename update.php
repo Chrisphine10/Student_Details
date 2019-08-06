@@ -1,3 +1,7 @@
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin']) && !isset($_SESSION['student'])) {
+    ?>
 <!DOCTYPE HTML>
 <html class="htmlextend">
 <head>
@@ -24,8 +28,8 @@ if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
 if (isset( $_GET["email"])) {
-    $emails = $_GET["email"];
-$sql = "SELECT * FROM student_details WHERE email_address = '". $emails."'";
+    $email = $_GET["email"];
+$sql = "SELECT * FROM student_details WHERE email_address = '". $email."'";
 $result = $connection->query($sql);
 if ($result->num_rows > 0) {
    
@@ -49,7 +53,7 @@ if ($result->num_rows > 0) {
 		<h3>Edit Student Detail</h3>		
 				<br>
 				<label for="email">Email:</label>
-				<input class="input" type="text" value="<?php if (isset($emails)) {echo $emails;}?>" name="email"><br>
+				<input class="input" type="text" value="<?php if (isset($email)) {echo $email;}?>" name="email"><br>
 				<label for="fname">First Name:</label>
 			<input class="input" type="text" value="<?php if (isset($fname)) {echo $fname;}?>" name="fname"
 			><br> 
@@ -91,3 +95,13 @@ if ($result->num_rows > 0) {
 	</div>
 </body>
 </html>
+<?php 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    session_unset(); 
+    session_destroy(); 
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+			}
+			else {
+			    header('Location: adminlogin.php');
+			}

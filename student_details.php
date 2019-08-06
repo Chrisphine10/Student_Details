@@ -1,6 +1,13 @@
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin']) && !isset($_SESSION['student'])) {
+    ?>
+<html>
+<head>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<div class="loginform display ext">
-<h1>Students List</h1>
+</head>
+<body>
+<div class="display formheader exxt">
 <?php
 // Using MYSQLi connection
 $servername = "127.0.0.1:3306";
@@ -16,7 +23,7 @@ if ($connection->connect_error) {
 $sql = "SELECT * FROM student_details";
 $result = $connection->query($sql);
 
-echo '<table class="table" border="0" cellspacing="2" cellpadding="2">
+echo '<h1>Students List</h1><hr><table class="table" border="0" cellspacing="2" cellpadding="2">
 <tr>
 <th>No.</th>
 <th>First Name</th>
@@ -62,3 +69,15 @@ if ($result->num_rows > 0) {
 }
 ?>
 </div>
+</body>
+</html>
+<?php 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    session_unset(); 
+    session_destroy(); 
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+			}
+			else {
+			    header('Location: adminlogin.php');
+			}

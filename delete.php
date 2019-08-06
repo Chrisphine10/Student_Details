@@ -1,4 +1,7 @@
-<html>
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin']) && !isset($_SESSION['student'])) {
+    ?><html>
 <head>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
@@ -14,3 +17,14 @@
 
 </body>
 </html>
+<?php 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    session_unset(); 
+    session_destroy(); 
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+			}
+			else {
+			    header('Location: adminlogin.php');
+			}
+			?>

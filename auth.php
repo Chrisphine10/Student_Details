@@ -9,12 +9,14 @@ $connection = new mysqli($servername, $username, $password, $dbname);
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
+else {
+    header('Location: error.php');
+}
 
 //log in details from user
 $logEmail = $_POST["email"];
 $logPassword = $_POST["password"];
-echo $logEmail;
-echo $logPassword;
+//$logPassword = password_hash($password_string, PASSWORD_BCRYPT);
 
 //get data from database
 $sql = "SELECT password FROM student_details WHERE email_address ='" . $logEmail."'";
@@ -27,12 +29,13 @@ if ($result->num_rows > 0) {
         $real_pass = $row["password"];
     }
 } else {
-    echo "error locating row";
+    echo "error locating the row";
 }
-if($real_pass == $logPassword){
+if(password_verify($logPassword, $real_pass)){
     session_start();
-    $_SESSION['loggedin'] = true;
-    $_SESSION['useremail'] = $logEmail;
+    $_SESSION['admin'] = false;
+    $_SESSION['student'] = true;
+    $_SESSION['loggedin'] = md5(microtime().rand());
     echo "successfull login";
     header('Location: studenthome.php');
 }

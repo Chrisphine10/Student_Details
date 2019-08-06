@@ -1,16 +1,6 @@
 <?php
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
-    echo "<script type=\"text/javascript\">
-                   $(document).ready(function() {
-                    promptLogin();
-                    });
-			        </script>";
-    echo "<script>
-			 window.onload = function() {
-             document.getElementById('hidden').style.display = 'none';
-             };
-			    </script>";
-}
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin']) && !isset($_SESSION['student'])) {
 
 $servername = "127.0.0.1:3306";
 $username = "pheene";
@@ -29,6 +19,7 @@ $dob = $_POST["date_of_birth"];
 $lname = $_POST["lname"];
 $id = $_POST["idnumber"];
 $userpassword = $_POST["password"];
+$password_hash = password_hash($userpassword, PASSWORD_BCRYPT);
 $gender = $_POST["gender"];
 
 if ($phone) {
@@ -64,8 +55,11 @@ if ($id) {
     if ($connection->query($sql) === TRUE) {
     } 
 }
-if ($userpassword) {
-    $sql = "UPDATE student_details SET password = '$userpassword' WHERE email_address = '$email'";
+if (($_POST["password"]) != ($_POST["cpassword"])) {
+    echo "Password does not match!";
+}
+elseif ($password_hash) {
+    $sql = "UPDATE student_details SET password = '$password_hash' WHERE email_address = '$email'";
     if ($connection->query($sql) === TRUE) {
     }
 }
@@ -84,7 +78,15 @@ if ($connection->query($sql) === TRUE) {
 }*/
 //header('Location: adminhome.php');
 $connection->close();
-header('Location: update.php')
+header('Location: update.php');
 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    session_unset();
+    session_destroy();
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+}
+else {
+    header('Location: adminlogin.php');
+}
 ?>
-            

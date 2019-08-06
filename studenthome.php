@@ -1,16 +1,6 @@
 <?php
-			if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
-			   echo "<script type=\"text/javascript\">
-                   $(document).ready(function() {
-                    promptLogin();
-                    });
-			        </script>";
-			   echo "<script>
-			 window.onload = function() {
-             document.getElementById('hidden').style.display = 'none';
-             };
-			    </script>";
-			}
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['student'] && isset($_SESSION['student']) && (!isset($_SESSION['admin']))) {
             ?>
             
 <!DOCTYPE HTML>
@@ -21,6 +11,18 @@
 </head>
     <body>
     <h1>Welcome Home student!</h1><br>
+    <?php echo $_SESSION['student']; ?>
     <a href="logoutsession.php">Log Out</a>
     </body>
 </html>
+<?php 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    session_unset(); 
+    session_destroy(); 
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+			}
+			else {
+			    header('Location: login.php');
+			}
+			?>

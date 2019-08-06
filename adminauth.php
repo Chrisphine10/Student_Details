@@ -29,17 +29,16 @@ if ($result->num_rows > 0) {
 } else {
     echo "error locating row";
 }
-if($real_pass == $logPassword){
+if(password_verify($logPassword, $real_pass)){
     session_start();
-    $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = $logUsername;
+    $_SESSION['student'] = FALSE;
+    $_SESSION['admin'] =TRUE;
+    $_SESSION['loggedin'] = md5(microtime().rand());
     echo "successfull login";
     header('Location: adminhome.php');
 }
 else {
     echo "invalid password";
+    header('Location: adminlogin.php');
 }
-
-$connection->close();
-
 ?>
