@@ -19,12 +19,22 @@ html{
 	padding: 5px;
 	height: auto;
 	width: 90% !important;
-	margin: auto;
+	margin: 0px;
 	justify-content: space-between;
 	text-align: center;
 	
 }
-
+.input {
+	color: #fff; 
+	border-radius: 0px;
+	width: 450px;
+	height: 40px;
+	padding-left: 10px;
+	margin: 5px;
+	border: 0px;
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	border-radius: 5px;
+	}
 }
 body{
 	margin-top: 40px;
