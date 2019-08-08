@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin']) && !isset($_SESSION['student'])) {
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin'])) {
     ?>
 <!DOCTYPE HTML>
 <html class="htmlextend">
@@ -10,6 +10,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 <title>Update Student</title>
 </head>
 <body>
+  <div class="flex">
+    <div class="nav-bar">
+    <ul>
+    <li><a href="adminhome.php">Home</a></li>
+    <li><a href="update.php">Update Student Details</a></li>
+    <li><a href="delete.php">Delete Student</a></li>
+    <li><a href="student_details.php">Student Details</a></li>
+    <li><a class="logout"  href="adminlogout.php">Log Out</a></li>
+    </ul>
+    </div>
 	<div class="loginform display exxt">
 	<form action="#">
 	<input class="input" type="email" name="email"
@@ -43,7 +53,6 @@ if ($result->num_rows > 0) {
         $id = $row["id_number"];
         $dob = $row["date_of_birth"];
         $religion = $row["religion"];
-        $pass = $row["password"];
     }
 }
    $connection->close();  
@@ -79,7 +88,6 @@ if ($result->num_rows > 0) {
 					<option value="muslim">Muslim</option>
 					<option value="hindu">Hindu</option>
 			</select><br>
-			<label>Your old password is <?php if (isset($pass)) { echo $pass;}?></label><br>
 			<input type="password" class="input" name="password" placeholder="Enter new password..."> <br> <input type="password"
 				class="input" name="cpassword" placeholder="Confirm new password..."> <br> <input
 				class="submit input" type="submit" name="submit1">
@@ -92,6 +100,7 @@ if ($result->num_rows > 0) {
 		   $connection->close();
 		}
 }?>
+	</div>
 	</div>
 </body>
 </html>

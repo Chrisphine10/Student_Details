@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && isset($_SESSION['admin']) && !isset($_SESSION['student'])) {
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && isset($_SESSION['admin'])) {
     ?>
 <!DOCTYPE HTML>
 <html class="htmlextend">
@@ -10,20 +10,21 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && isset($_SESSION['ad
 <title>Admin Home Page</title>
 </head>
     <body>
-    <div class="loginform display">
-    <h1>Welcome Home Admin!</h1><br>
-    <div>
-    <div>
-    <ul class="flexer">
+     <div class="flex">
+    <div class="nav-bar">
+    <ul>
     <li><a href="adminhome.php">Home</a></li>
     <li><a href="update.php">Update Student Details</a></li>
     <li><a href="delete.php">Delete Student</a></li>
     <li><a href="student_details.php">Student Details</a></li>
+    <li><a class="logout"  href="adminlogout.php">Log Out</a></li>
     </ul>
-    <?php echo $_SESSION['admin']; ?>
-    <a href="adminlogout.php">Log Out</a>
     </div>
-    <div></div>
+    <div class="loginform display exxt">
+    <div class="welcome">
+    <h1>Welcome Home Admin!</h1>
+    </div><br>
+   
     </div>
     </div>
     </body>

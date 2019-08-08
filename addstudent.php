@@ -23,7 +23,7 @@ if (isset($_POST['submit1'])) {
     } else if (!isset($_POST["gender"])) {
         echo "<p>gender not selected!</p>";
     } 
-    else if(($_POST["password"]) == ($_POST["cpassword"])){
+    else if(($_POST["password"]) === ($_POST["cpassword"])){
         echo "<p>password does not match</p>";
     }
     else {

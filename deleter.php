@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin']) && !isset($_SESSION['student'])) {
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin'])) {
    
 // Using MYSQLi connection
 $servername = "127.0.0.1:3306";

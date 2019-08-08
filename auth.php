@@ -34,6 +34,7 @@ if ($result->num_rows > 0) {
 if(password_verify($logPassword, $real_pass)){
     session_start();
     $_SESSION['admin'] = false;
+    $_SESSION['email'] = $_POST["email"];
     $_SESSION['student'] = true;
     $_SESSION['loggedin'] = md5(microtime().rand());
     echo "successfull login";
