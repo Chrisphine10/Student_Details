@@ -33,7 +33,8 @@ if ($connection->connect_error) {
 $sql = "SELECT * FROM student_details";
 $result = $connection->query($sql);
 
-echo '<h1>Students List</h1><hr><table class="table" border="0" cellspacing="2" cellpadding="2">
+echo '<h1>Students List</h1><hr>';
+				    echo '<table class="table" border="0" cellspacing="2" cellpadding="5">
 <tr>
 <th>No.</th>
 <th>First Name</th>
