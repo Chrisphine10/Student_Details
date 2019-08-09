@@ -60,17 +60,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
         $sql = "UPDATE student_details SET gender = '$gender' WHERE email_address = '$email'";
         if ($connection->query($sql) === TRUE) {}
     }
-    /*
-     * $sql = "UPDATE student_details SET fname = '$fname', lname = '$lname', id_number = '$id', gender = '$gender', date_of_birth = '$dob', religion = '$religion', phone_number = '$phone', password = '$userpassword'
-     * WHERE email = '$email'";
-     *
-     * if ($connection->query($sql) === TRUE) {
-     * header('Location: update.php');
-     * } else {
-     * echo "Error: " . $sql . "<br>" . $connection->error;
-     * }
-     */
-    // header('Location: adminhome.php');
+    
     $connection->close();
     header('Location: update.php');
 

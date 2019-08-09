@@ -17,11 +17,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
     <li><a href="update.php">Update Student Details</a></li>
     <li><a href="delete.php">Delete Student</a></li>
     <li><a href="student_details.php">Student Details</a></li>
+     <li><a href="feepayment.php">Fee Payment</a></li>
+    <li><a href="financial_records.php">Financial Records</a></li>
+				<li><a href="reportgenerate.php">Financial Report</a></li>
+				<li><a href="examlist.php">Exams</a></li>
     <li><a class="logout"  href="adminlogout.php">Log Out</a></li>
     </ul>
     </div>
 	<div class="loginform display exxt">
 	<form action="#">
+	<h1>Update Student Details</h1>
 	<input class="input" type="email" name="email"
 				placeholder="Enter student email address...">
 				<input class="submit input" type="submit">
@@ -113,4 +118,4 @@ $_SESSION['LAST_ACTIVITY'] = time();
 			}
 			else {
 			    header('Location: adminlogin.php');
-			}
+			} ?>
