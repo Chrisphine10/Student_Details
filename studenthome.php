@@ -15,7 +15,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['student'
 	<div class="flex">
 		<div class="nav-bar">
 			<ul>
-				<li><a href="studenthome.php">Home</a></li>
+				<li><a class="selectnav" href="studenthome.php">Home</a></li>
 				<li><a href="my_details.php">Details</a></li>
 				<li><a href="my_profiler.php">Profile</a></li>
 				<li><a class="logout" href="logoutsession.php">Log Out</a></li>

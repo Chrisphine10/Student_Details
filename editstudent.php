@@ -60,7 +60,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
         $sql = "UPDATE student_details SET gender = '$gender' WHERE email_address = '$email'";
         if ($connection->query($sql) === TRUE) {}
     }
-    
+
     $connection->close();
     header('Location: update.php');
 

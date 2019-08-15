@@ -24,13 +24,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['student'
                 $sql = "UPDATE student_profile SET image = '$image' WHERE email = '$email'";
                 $result = $connection->query($sql);
                 if (isset($result)) {
-                   
+
                     header('Location: my_profiler.php');
                     $connection->close();
                 }
             } else
-              
-            header('Location: my_profiler.php');
+
+                header('Location: my_profiler.php');
             $connection->close();
         }
     } else {

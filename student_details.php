@@ -13,15 +13,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 				<li><a href="adminhome.php">Home</a></li>
 				<li><a href="update.php">Update Student Details</a></li>
 				<li><a href="delete.php">Delete Student</a></li>
-				<li><a href="student_details.php">Student Details</a></li>
-				 <li><a href="feepayment.php">Fee Payment</a></li>
+				<li><a class="selectnav" href="student_details.php">Student Details</a></li>
+				<li><a href="feepayment.php">Fee Payment</a></li>
 				<li><a href="financial_records.php">Financial Records</a></li>
 				<li><a href="reportgenerate.php">Financial Report</a></li>
 				<li><a href="examlist.php">Exams</a></li>
 				<li><a class="logout" href="adminlogout.php">Log Out</a></li>
 			</ul>
 		</div>
-		<div class="display formheader exxt">
+		<div class="display overflower formheader exxt">
 <?php
     // Using MYSQLi connection
     $servername = "127.0.0.1:3306";
@@ -75,13 +75,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
     <td>' . $dob . '</td>
     <td>' . $religion . '</td>
 </tr><br> ';
-            
         }
         $result->free();
     } else {
         echo "Records Not Found";
     }
-   
+
     ?>
 </div>
 	</div>
@@ -96,4 +95,4 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
     $_SESSION['LAST_ACTIVITY'] = time();
 } else {
     header('Location: adminlogin.php');
-			}
+}

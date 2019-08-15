@@ -1,11 +1,13 @@
+<html class="htmlextend">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<div class="signupform display">
-		<form name="signup" action="addstudent.php" id="loginform" method="post"
-			onsubmit="validateform()">
+	<div class="signupform">
+	<div class="inside">
+		<form name="signup" action="addstudent.php" id="loginform"
+			method="post" onsubmit="validateform()">
 			<div class="formheader">
 				<a href="login.php" id="logbord">Log In</a><a class="selected">Sign
 					Up</a>
@@ -47,4 +49,6 @@
 			</div>
 		</div>
 	</div>
+	</div>
 </body>
+</html>

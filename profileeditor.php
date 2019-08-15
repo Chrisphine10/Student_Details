@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['loggedin']) && isset($_SESSION['email']) && $_SESSION['loggedin'] && $_SESSION['student'] && isset($_SESSION['student'])) {
-?> 
+    ?>
 <!DOCTYPE HTML>
 <head>
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -16,7 +16,7 @@ if (isset($_SESSION['loggedin']) && isset($_SESSION['email']) && $_SESSION['logg
 			<ul>
 				<li><a href="studenthome.php">Home</a></li>
 				<li><a href="my_details.php">Details</a></li>
-				<li><a href="my_profiler.php">Profile</a></li>
+				<li><a class="selectnav" href="my_profiler.php">Profile</a></li>
 				<li><a class="logout" href="logoutsession.php">Log Out</a></li>
 			</ul>
 		</div>
@@ -45,28 +45,31 @@ if (isset($_SESSION['loggedin']) && isset($_SESSION['email']) && $_SESSION['logg
                 // output data of each row
                 while ($row = $result->fetch_assoc()) {
                     $bio = $row["bio"];
-                
-            ?>
+
+                    ?>
 				<form action="profilescript.php" class="textarea" method="post">
-					<textarea class="round" id="profile" required="required" name="profile"><?php if (isset($bio)) {echo $bio;}?></textarea>
-					<br> 
-					<input class="input" required="required" type="file"
+					<textarea class="round" id="profile" required="required"
+						name="profile"><?php if (isset($bio)) {echo $bio;}?></textarea>
+					<br> <input class="input" required="required" type="file"
 						name="pic" accept="image/*"><br> <input type="submit"
 						class="submit input"><br>
 				</form>
 				<?php
                 }
             }
-        } else{ ?>
-            <form action="profilescript.php" class="textarea" method="post">
-            <textarea id="profile" required="required" name="profile">Enter Your Bio...</textarea>
+        } else {
+            ?>
+            <form action="profilescript.php" class="textarea"
+					method="post">
+					<textarea id="profile" required="required" name="profile">Enter Your Bio...</textarea>
 					<br> <input class="input" required="required" type="file"
 						name="pic" accept="image/*"><br> <input type="submit"
 						class="submit input"><br>
-				</form><?php 
-            
+				</form><?php
         }
-    } $connection->close(); ?>
+    }
+    $connection->close();
+    ?>
 			</div>
 		</div>
 	</div>

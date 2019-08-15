@@ -18,15 +18,11 @@ if (isset($_POST['submit1'])) {
     $result = $connection->query($sqltest);
     if ($result->num_rows > 0) {
         echo "<p>Email already registered to another user</p>";
-    } else if(!isset($_POST["religion"])) {
+    } else if (! isset($_POST["religion"])) {
         echo "<p>religion not selected!</p>";
-    } else if (!isset($_POST["gender"])) {
+    } else if (! isset($_POST["gender"])) {
         echo "<p>gender not selected!</p>";
-    } 
-    else if(($_POST["password"]) === ($_POST["cpassword"])){
-        echo "<p>password does not match</p>";
-    }
-    else {
+    } else {
         $phone = $_POST["phone_number"];
         $email = $_POST["email"];
         $religion = $_POST["religion"];

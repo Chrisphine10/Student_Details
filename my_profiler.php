@@ -9,12 +9,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['student'
 <title>Profiler</title>
 </head>
 <body>
-<div class="flex">
-    <div class="nav-bar">
+	<div class="flex">
+		<div class="nav-bar">
 			<ul>
 				<li><a href="studenthome.php">Home</a></li>
 				<li><a href="my_details.php">Details</a></li>
-				<li><a href="my_profiler.php">Profile</a></li>
+				<li><a class="selectnav" href="my_profiler.php">Profile</a></li>
 				<li><a class="logout" href="logoutsession.php">Log Out</a></li>
 			</ul>
 		</div>
@@ -59,16 +59,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['student'
 			</div>
 		</div>
 		<?php
-} else { ?>
+        } else {
+            ?>
             <form action="profileeditor.php">
-            <input type="submit" value="Make a profile" class="submit input">
-            </form><br>
+			<input type="submit" value="Make a profile" class="submit input">
+		</form>
+		<br>
             <?php
             $connection->close();
             echo "profile not found!";
         }
     }
-    
+
     ?>
     </div>
 </body>
