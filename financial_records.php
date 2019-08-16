@@ -53,7 +53,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
         $max_date = $_GET['maxdate'];
         echo 'from: ' . $min_date . ' to: ' . $max_date;
 
-        echo '<table class="table" border="0" cellspacing="2" cellpadding="5">
+        echo '<table class="table" border="2" cellspacing="2" cellpadding="5">
 	
 <tr>
 <th>No</th>
@@ -65,7 +65,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 <th>Credit</th>
 </tr><br>';
 
-        $sql = "SELECT * FROM finance_record";
+        $sql = "SELECT * FROM finance_record ORDER BY full_name ASC";
         $result = $connection->query($sql);
 
         if ($result->num_rows > 0) {

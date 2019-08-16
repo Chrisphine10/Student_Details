@@ -31,10 +31,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
         $date = date('Y-m-d');
 
         if (isset($email)) {
-            $sql = "INSERT INTO finance_record (full_name, debit, email, date, balance, credit) VALUES ('" . $fullname . "','" . $debit . "', '" . $email . "', '" . $date . "', '" . $balance . "', '" . $credit . "')";
-
-            if ($connection->query($sql) === TRUE) {
-                header('Location: feepayment.php');
+            $sql1 = "UPDATE finance_record SET balance = '$balance', credit = '$credit', date = '$date', debit = '$debit' WHERE email_address = '$email'";
+            if ($connection->query($sql1) === TRUE) {
+                $sql = "INSERT INTO record_history (full_name, debit, email, date, balance, credit) VALUES ('" . $fullname . "','" . $debit . "', '" . $email . "', '" . $date . "', '" . $balance . "', '" . $credit . "')";
+                if ($connection->query($sql) === TRUE) {
+                    header('Location: feepayment.php');
+                }
             } else {
                 echo "Error: " . $sql . "<br>" . $connection->error;
             }
@@ -60,7 +62,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
         $result = $connection->query($sqltest);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $credit = $row['credit'];
                 $balance = $row['balance'];
             }
         }
@@ -69,16 +70,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
         $date = date('Y-m-d');
 
         if (isset($email)) {
-            $sql = "INSERT INTO finance_record (full_name, debit, email, date, balance, credit) VALUES ('" . $fullname . "','" . $debit . "', '" . $email . "', '" . $date . "', '" . $balance . "', '" . $credit . "')";
+            $sql1 = "UPDATE finance_record SET balance = '$balance', credit = '$credit', date = '$date', debit = '$debit' WHERE email = '$email'";
+            if ($connection->query($sql1) === TRUE) {
+                $sql = "INSERT INTO record_history (full_name, debit, email, date, balance, credit) VALUES ('" . $fullname . "','" . $debit . "', '" . $email . "', '" . $date . "', '" . $balance . "', '" . $credit . "')";
 
-            if ($connection->query($sql) === TRUE) {
-                header('Location: feepayment.php');
+                if ($connection->query($sql) === TRUE) {
+                    header('Location: feepayment.php');
+                }
             } else {
                 echo "Error: " . $sql . "<br>" . $connection->error;
             }
 
             $connection->close();
-            header('Location: feepayment.php');
         } else {
             echo "error";
         }

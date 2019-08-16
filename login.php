@@ -4,7 +4,7 @@
 <div class="inside">
 	<form name="login" action="auth.php" method="post">
 		<div class="formheader">
-			<a class="selected" id="logbord">Log In</a><a href="signup.php"> Sign
+			<a class="selectnav" id="logbord">Log In</a><a href="signup.php"> Sign
 				Up</a>
 		</div>
 		<hr>

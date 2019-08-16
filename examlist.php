@@ -34,23 +34,29 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 				<li><a class="logout" href="adminlogout.php">Log Out</a></li>
 			</ul>
 		</div>
-		<div class="loginform display exxt">
+		<div class="display exxt">
 			<div>
 				<form action="examdebit.php" method="post">
-					<input type="submit" class="input submit" name="exam" value="EXAM TIME"><br>
+					<input type="submit" class="input submit" name="init"
+						value="ADD STUDENTS"><br>
+				</form><br>
+				<form action="examdebit.php" method="post">
+					<input type="submit" class="input submit" name="exam"
+						value="EXAM TIME"><br>
 				</form>
 			</div>
 			<div>
-				<div class="loginform display exxt">
+				<div class="overflower display exxt">
 					<div>
 						<form action="#" method="get">
 							<input type="submit" class="input submit" name="getlist"
 								value="Get List"><br>
 						</form>
+
 					</div>
     <?php
     if (isset($_GET['getlist'])) {
-        $sql = "SELECT * FROM finance_record ORDER BY email";
+        $sql = "SELECT * FROM finance_record ORDER BY idfinance_record DESC, email";
         $result = $connection->query($sql);
         if ($result->num_rows > 0) {
             // AS fr GROUP BY fr.email ORDER BY fr.idfinance_record DESC
