@@ -2,12 +2,12 @@
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] && isset($_SESSION['admin'])) {
     ?>
-<!DOCTYPE HTML>
-<html>
+    <!DOCTYPE HTML>
+<html class="htmlextend">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Cp1252">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<title>Financial Records</title>
+<title>Update Student</title>
 </head>
 <body>
 	<div class="flex">
@@ -24,18 +24,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 				<li><a class="logout" href="adminlogout.php">Log Out</a></li>
 			</ul>
 		</div>
-		<div class="loginform overflower display exxt">
-			<div>
-				<form action="#" method="get">
-					<label for="mindate">Min Date:</label> <input class="input"
-						type="date" required="required" name="mindate"> <label
-						for="maxdate">Max Date:</label> <input class="input" type="date"
-						required="required" name="maxdate"><br> <input
-						class="submit input" type="submit" name="sub1">
-
-				</form>
-	
-	<?php
+		<div class="overflower display exxt">
+		<?php
     // Using MYSQLi connection
     $servername = "127.0.0.1:3306";
     $username = "pheene";
@@ -48,12 +38,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
     }
 
     echo '<h1>Financial Record</h1><hr>';
-    if (isset($_GET['mindate']) && isset($_GET['maxdate'])) {
-        $min_date = $_GET['mindate'];
-        $max_date = $_GET['maxdate'];
-        echo 'from: ' . $min_date . ' to: ' . $max_date;
 
-        echo '<table class="table" border="2" cellspacing="2" cellpadding="5">
+    echo '<table class="table" border="2" cellspacing="2" cellpadding="5">
 	
 <tr>
 <th>No</th>
@@ -65,22 +51,21 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 <th>Credit</th>
 </tr><br>';
 
-        $sql = "SELECT * FROM finance_record ORDER BY full_name ASC";
-        $result = $connection->query($sql);
+    $sql = "SELECT * FROM finance_record ORDER BY full_name ASC";
+    $result = $connection->query($sql);
 
-        if ($result->num_rows > 0) {
+    if ($result->num_rows > 0) {
 
-            $counter = 1;
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                $date = $row["date"];
-                $email = $row["email"];
-                $balance = $row["balance"];
-                $debit = $row["debit"];
-                $credit = $row["credit"];
-                $full_name = $row["full_name"];
-                if ($date <= $max_date && $date >= $min_date) {
-                    echo '
+        $counter = 1;
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            $date = $row["date"];
+            $email = $row["email"];
+            $balance = $row["balance"];
+            $debit = $row["debit"];
+            $credit = $row["credit"];
+            $full_name = $row["full_name"];
+            echo '
 <tr>
     <td>' . $counter ++ . '</td>
     <td>' . $full_name . '</td>
@@ -90,19 +75,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
     <td>' . $debit . '</td>
     <td>' . $credit . '</td>
 	</tr><br>';
-                }
-            }
-
-            $result->free();
-        } else {
-            echo "No Record Found";
         }
+
+        $result->free();
+    } else {
+        echo "No Record Found";
     }
 
     $connection->close();
     ?>
     
-    	</div>
 		</div>
 	</div>
 </body>
@@ -116,3 +98,4 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 } else {
     header('Location: adminlogin.php');
 }
+?>
