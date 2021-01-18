@@ -3,8 +3,8 @@
 // $fname, $lname, $id, $gender, $dob, $religion, $phone, $email, $userpassword
 // Using MYSQLi connection
 $servername = "127.0.0.1:3306";
-$username = "pheene";
-$password = "Passw0rd";
+$username = "root";
+$password = "12345678";
 $dbname = "egerton_university";
 
 $connection = new mysqli($servername, $username, $password, $dbname);

@@ -27,8 +27,8 @@ if (isset($_SESSION['loggedin']) && isset($_SESSION['email']) && $_SESSION['logg
 				<?php
     // Using MYSQLi connection
     $servername = "127.0.0.1:3306";
-    $username = "pheene";
-    $password = "Passw0rd";
+    $username = "root";
+    $password = "12345678";
     $dbname = "egerton_university";
 
     $connection = new mysqli($servername, $username, $password, $dbname);

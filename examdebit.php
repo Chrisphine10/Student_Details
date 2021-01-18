@@ -4,7 +4,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
 
     $servername = "127.0.0.1:3306";
     $username = "pheene";
-    $password = "Passw0rd";
+    $password = "12345678";
     $dbname = "egerton_university";
 
     $connection = new mysqli($servername, $username, $password, $dbname);
@@ -39,7 +39,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['admin'] 
     if (isset($_POST['init'])) {
         $servername = "127.0.0.1:3306";
         $username = "pheene";
-        $password = "Passw0rd";
+        $password = "12345678";
         $dbname = "egerton_university";
 
         $connection = new mysqli($servername, $username, $password, $dbname);
